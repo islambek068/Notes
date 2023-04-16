@@ -18,7 +18,7 @@ func FetchTodosFormDB(db *mongo.Collection) ([]models.Todo, error) {
 	cur, err := db.Find(ctx, bson.D{})
 	if err != nil {
 		defer cur.Close(ctx)
-		return todoList, errors.New("failed to fetch todo")
+		return todoList, errors.New("failed to fetch")
 	}
 
 	if err = cur.All(ctx, &todos); err != nil {

@@ -53,7 +53,7 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 	todos, err := helpers.FetchTodosFormDB(db)
 	if err != nil {
 		rnd.JSON(w, http.StatusProcessing, renderer.M{
-			"message": "Failed to fetch todo",
+			"message": "Failed to fetch",
 			"error":   err,
 		})
 
@@ -75,7 +75,7 @@ func FetchTodos(w http.ResponseWriter, r *http.Request) {
 	todos, err := helpers.FetchTodosFormDB(db)
 	if err != nil {
 		rnd.JSON(w, http.StatusProcessing, renderer.M{
-			"message": "Failed to fetch todo",
+			"message": "Failed to fetch",
 			"error":   err,
 		})
 
@@ -121,7 +121,7 @@ func CreateTodo(w http.ResponseWriter, r *http.Request) {
 	todos, err := helpers.FetchTodosFormDB(db)
 	if err != nil {
 		rnd.JSON(w, http.StatusProcessing, renderer.M{
-			"message": "Failed to fetch todo",
+			"message": "Failed to fetch",
 			"error":   err,
 		})
 
@@ -129,9 +129,10 @@ func CreateTodo(w http.ResponseWriter, r *http.Request) {
 	}
 
 	rnd.JSON(w, http.StatusCreated, renderer.M{
-		"message": "todo is created successfully",
+		"message": "created successfully",
 		"todos":   todos,
 	})
+
 }
 
 // Update todo
@@ -167,7 +168,7 @@ func UpdateTodo(w http.ResponseWriter, r *http.Request) {
 
 	if err != nil {
 		rnd.JSON(w, http.StatusProcessing, renderer.M{
-			"message": "Failed to update todo",
+			"message": "Failed to update",
 			"error":   err,
 		})
 		return
@@ -176,7 +177,7 @@ func UpdateTodo(w http.ResponseWriter, r *http.Request) {
 	todos, err := helpers.FetchTodosFormDB(db)
 	if err != nil {
 		rnd.JSON(w, http.StatusProcessing, renderer.M{
-			"message": "Failed to fetch todo",
+			"message": "Failed to fetch",
 			"error":   err,
 		})
 
@@ -184,7 +185,7 @@ func UpdateTodo(w http.ResponseWriter, r *http.Request) {
 	}
 
 	rnd.JSON(w, http.StatusOK, renderer.M{
-		"message": "Todo updated successfully",
+		"message": "updated successfully",
 		"todos":   todos,
 	})
 }
@@ -204,7 +205,7 @@ func DeleteOneTodo(w http.ResponseWriter, r *http.Request) {
 	_, err = db.DeleteOne(ctx, bson.M{"_id": objID})
 	if err != nil {
 		rnd.JSON(w, http.StatusProcessing, renderer.M{
-			"message": "Failed to delete todo",
+			"message": "Failed to delete",
 			"error":   err,
 		})
 		return
@@ -213,7 +214,7 @@ func DeleteOneTodo(w http.ResponseWriter, r *http.Request) {
 	todos, err1 := helpers.FetchTodosFormDB(db)
 	if err1 != nil {
 		rnd.JSON(w, http.StatusProcessing, renderer.M{
-			"message": "Failed to fetch todo",
+			"message": "Failed to fetch",
 			"error":   err1,
 		})
 
@@ -221,7 +222,7 @@ func DeleteOneTodo(w http.ResponseWriter, r *http.Request) {
 	}
 
 	rnd.JSON(w, http.StatusOK, renderer.M{
-		"message": "todo is successfully deleted",
+		"message": "successfully deleted",
 		"todos":   todos,
 	})
 }
@@ -236,7 +237,7 @@ func DeleteCompleted(w http.ResponseWriter, r *http.Request) {
 	_, err := db.DeleteMany(ctx, filter)
 	if err != nil {
 		rnd.JSON(w, http.StatusProcessing, renderer.M{
-			"message": "Failed to delete completed todos",
+			"message": "Failed to delete completed",
 			"error":   err,
 		})
 		return
@@ -245,7 +246,7 @@ func DeleteCompleted(w http.ResponseWriter, r *http.Request) {
 	todos, err1 := helpers.FetchTodosFormDB(db)
 	if err1 != nil {
 		rnd.JSON(w, http.StatusProcessing, renderer.M{
-			"message": "Failed to fetch todo",
+			"message": "Failed to fetch",
 			"error":   err1,
 		})
 
@@ -253,7 +254,7 @@ func DeleteCompleted(w http.ResponseWriter, r *http.Request) {
 	}
 
 	rnd.JSON(w, http.StatusOK, renderer.M{
-		"message": "todo is successfully deleted",
+		"message": "successfully deleted",
 		"todos":   todos,
 	})
 }
