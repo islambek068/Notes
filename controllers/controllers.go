@@ -132,6 +132,7 @@ func CreateTodo(w http.ResponseWriter, r *http.Request) {
 		"message": "created successfully",
 		"todos":   todos,
 	})
+
 }
 
 // Update todo
